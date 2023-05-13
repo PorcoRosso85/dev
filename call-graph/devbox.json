@@ -1,0 +1,26 @@
+{
+  "packages": [
+    "zsh",
+    "rsync",
+    "neovim",
+    "fd",
+    "ripgrep",
+    "fzf",
+    "bat",
+    "zsh-powerlevel10k",
+    "curl",
+    "wget",
+    "unzip",
+    "gh",
+    "nodejs",
+    "typescript",
+    "pyright",
+    "python310"
+  ],
+  "shell": {
+    "init_hook": null
+  },
+  "nixpkgs": {
+    "commit": "f80ac848e3d6f0c12c52758c0f25c10c97ca3b62"
+  }
+}
