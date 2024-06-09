@@ -14,18 +14,20 @@
       packages.${system}.default = pkgs.mkShell {
         buildInputs = [
           pkgs.neovim
-          pkgs.zsh
-          pkgs.zsh-powerlevel10k
-          pkgs.git
-          pkgs.gh
+          # pkgs.zsh
+          # pkgs.zsh-powerlevel10k
           pkgs.curl
           pkgs.wget
+          pkgs.git
+          pkgs.gh
           pkgs.eza
           pkgs.fd
           pkgs.bat
           pkgs.lazygit
           pkgs.nil
           pkgs.nixpkgs-fmt
+          
+          pkgs.mise
 
           pkgs.docker
           pkgs.lazydocker
