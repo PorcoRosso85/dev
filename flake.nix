@@ -28,6 +28,8 @@
           pkgs.lazygit
           pkgs.nil
           pkgs.nixpkgs-fmt
+          
+          pkgs.mise
 
           pkgs.mise
 
