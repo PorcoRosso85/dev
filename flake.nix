@@ -20,12 +20,14 @@
       defaultPackage = self.packages.${system}.default;
 
       # nix run
-      apps.webServer = flake-utils.lib.mkApp {
-        drv = pkgs.writeShellScriptBin "webServer" ''
-          #!/usr/bin/env bash
-          echo "Starting web server"
-          python3 -m http.server 8080
-        '';
+      apps = {
+        webServer = flake-utils.lib.mkApp {
+          drv = pkgs.writeShellScriptBin "webServer" ''
+            #!/usr/bin/env bash
+            echo "Starting web server"
+            python3 -m http.server 8080
+          '';
+        };
       };
       defaultApp = self.apps.${system}.webServer;
     }
