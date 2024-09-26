@@ -1,50 +1,24 @@
 {
-  description = "My Neovim flake";
+  description = "/dev";
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, flake-utils }: flake-utils.lib.eachDefaultSystem (system:
     let
-      system = "x86_64-darwin"; # Or whatever system you are on
-      pkgs = import nixpkgs { inherit system; };
-
-      # database = import ./database.nix { inherit pkgs; };
-    in
-    {
-      packages.${system}.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.neovim
-          # pkgs.zsh
-          # pkgs.zsh-powerlevel10k
-          pkgs.helix
-          pkgs.zellij
-          pkgs.curl
-          pkgs.wget
-          pkgs.git
-          pkgs.gh
-          pkgs.eza
-          pkgs.fd
-          pkgs.bat
-          pkgs.lazygit
-          pkgs.nil
-          pkgs.nixpkgs-fmt
-          
-          pkgs.mise
-
-          pkgs.mise
-
-          pkgs.docker
-          pkgs.lazydocker
-          # pkgs.containerd?
-          # pkgs.act
-
-        ];
-
-        shellHook = ''
-          echo "Hello, world! Shell hook ran by nix flakes."
-
-        '';
-
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      devShells.default = import ./develop.nix { inherit pkgs; };
+    
+      apps = {
+        workspace = flake-utils.lib.mkApp {
+          drv = pkgs.writeShellScriptBin "find workspaces" ''
+            find . | rg code-workspace | cursor $(fzf) 
+          '';
+        };
       };
-    };
+    }
+  );
 }
