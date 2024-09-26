@@ -2,6 +2,7 @@
 
 pkgs.mkShell {
   buildInputs = [
+    pkgs.helix
     pkgs.zellij
     pkgs.curl
     pkgs.wget
@@ -35,9 +36,11 @@ pkgs.mkShell {
   # cargo install lsp-ai -F llama_cpp -F metal # cargoのpath設定が必要
   shellHook = ''
     echo "Hello Dev!!."
-    export "PATH=$PATH:$HOME/.cargo/bin" && echo "exported path for cargo $HOME/.cargo/bin"
+    # export "PATH=$PATH:$HOME/.cargo/bin" && echo "exported path for cargo $HOME/.cargo/bin"
 
-    cargo install lsp-ai
+    # cargo install lsp-ai
+
+    nu
 
   '';
 

@@ -10,15 +10,26 @@
     let
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+      # nix develop
       devShells.default = import ./develop.nix { inherit pkgs; };
-    
+      packages = {
+        default = pkgs.writeShellScriptBin "default" ''
+          echo "This is the default package"
+        '';
+      };
+      defaultPackage = self.packages.${system}.default;
+
+      # nix run
       apps = {
-        workspace = flake-utils.lib.mkApp {
-          drv = pkgs.writeShellScriptBin "find workspaces" ''
-            find . | rg code-workspace | cursor $(fzf) 
+        webServer = flake-utils.lib.mkApp {
+          drv = pkgs.writeShellScriptBin "webServer" ''
+            #!/usr/bin/env bash
+            echo "Starting web server"
+            python3 -m http.server 8080
           '';
         };
       };
+      defaultApp = self.apps.${system}.webServer;
     }
   );
 }
