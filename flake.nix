@@ -20,7 +20,9 @@
         };
       };
 
-      defaultPackage = devShells.default;
+      defaultPackage = pkgs.writeShellScriptBin "default" ''
+        echo "This is the default package"
+      '';
     }
   );
 }
