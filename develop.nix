@@ -40,6 +40,8 @@ pkgs.mkShell {
 
     # cargo install lsp-ai
 
+    nu
+
   '';
 
 }
