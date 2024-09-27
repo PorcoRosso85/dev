@@ -24,6 +24,8 @@ pkgs.mkShell {
     pkgs.nixfmt
     pkgs.nushell
     pkgs.rustup
+
+    pkgs.marksman
   
   ];
 
