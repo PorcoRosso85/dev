@@ -17,19 +17,13 @@ pkgs.mkShell {
     pkgs.zoxide
     pkgs.eza
     pkgs.lazygit
+
+    # pkgs.mise
+
     pkgs.nixd
     pkgs.nixfmt
-  
-    pkgs.mise
-
-    pkgs.docker
-    pkgs.lazydocker
-
-    pkgs.rustup
-  
-    # pkgs.shell
-    # pkgs.shfmt # shell formatter, https://note.com/navitime_tech/n/n346d073de9c7
     pkgs.nushell
+    pkgs.rustup
   
   ];
 
