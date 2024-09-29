@@ -17,6 +17,7 @@ pkgs.mkShell {
     pkgs.zoxide
     pkgs.eza
     pkgs.lazygit
+    pkgs.broot
 
     # pkgs.mise
 
@@ -26,17 +27,19 @@ pkgs.mkShell {
     pkgs.rustup
 
     pkgs.marksman
+
+    
   
   ];
 
   # cargo install lsp-ai -F llama_cpp -F metal # cargoのpath設定が必要
   shellHook = ''
     echo "Hello Dev!!."
-    # export "PATH=$PATH:$HOME/.cargo/bin" && echo "exported path for cargo $HOME/.cargo/bin"
+    export "PATH=$PATH:$HOME/.cargo/bin" && echo "exported path for cargo $HOME/.cargo/bin"
 
-    # cargo install lsp-ai
-
-    nu
+    cargo install lsp-ai
+    # cargo install --git https://github.com/euclio/mdpls
+    # cargo install --git https://github.com/astral-sh/uv uv
 
   '';
 
