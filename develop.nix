@@ -4,6 +4,7 @@ pkgs.mkShell {
   buildInputs = [
     pkgs.helix
     pkgs.zellij
+    pkgs.starship
     pkgs.curl
     pkgs.wget
     pkgs.unzip
@@ -40,6 +41,8 @@ pkgs.mkShell {
     cargo install lsp-ai
     # cargo install --git https://github.com/euclio/mdpls
     # cargo install --git https://github.com/astral-sh/uv uv
+
+    source $HOME/.common_profile
 
   '';
 
